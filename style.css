@@ -16,7 +16,7 @@ body {
   perspective: 10000px;
   transform-style: preserve-3d;
   overflow: hidden;
-  background-image: url('assets/texture.svg');
+  background-image: url('preview/texture.svg');
 }
 
 .container {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mintra</title>
+    <meta name="google" content="notranslate" />
+    <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script id="mintra-template" type="text/x-handlebars-template">
+      <article class="container">
+        <div class="base base-top"></div>
+        {{#each sides}}
+          <div class="side side-{{this}}"></div>
+        {{/each}}
+
+        {{#each containers}}
+          <article class="container container-bottom container-{{this}}">
+            <div class="base base-top"></div>
+            {{#each ../sides}}
+              <div class="side side-{{this}}"></div>
+            {{/each}}
+          </article>
+        {{/each}}
+      </article>
+    </script>
+
+    <script>
+      const source = document.getElementById("mintra-template").innerHTML;
+      const template = Handlebars.compile(source);
+      const html = template({
+        sides: [1, 2, 3, 4, 5, 6],
+        containers: [2, 3]
+      });
+      document.body.innerHTML = html + '<script src="script.js"><\/script>';
+    </script>
+  </body>
+</html>
